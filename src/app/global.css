@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+:root {
+  --bg: #050809;
+  --bg-deep: #030506;
+
+  --teal-1: #19c9bd;
+  --teal-2: #0b8178;
+  --teal-3: #063d3a;
+
+  --text: #f7f8f8;
+  --muted: #a9b2b1;
+
+  --content-width: 1360px;
+
+/* --------------------------------------------------
+   RESET
+-------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-deep);
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+
+  min-height: 100vh;
+
+  color: var(--text);
+  background:
+    /* Bright teal glow — top right */
+    radial-gradient(
+      ellipse 58% 48% at 93% 12%,
+      rgba(35, 203, 190, 0.68) 0%,
+      rgba(18, 142, 133, 0.46) 27%,
+      rgba(6, 66, 63, 0.28) 51%,
+      transparent 76%
+    ),
+
+    /* Secondary teal glow — left/middle */
+    radial-gradient(
+      ellipse 62% 52% at 5% 54%,
+      rgba(19, 133, 124, 0.55) 0%,
+      rgba(8, 74, 70, 0.36) 31%,
+      rgba(4, 38, 36, 0.15) 55%,
+      transparent 78%
+    ),
+
+    /* Subtle lower-center green */
+    radial-gradient(
+      ellipse 60% 38% at 43% 100%,
+      rgba(5, 73, 68, 0.30),
+      transparent 72%
+    ),
+
+    /* Overall black vignette */
+    radial-gradient(
+      ellipse 100% 100% at 50% 40%,
+      rgba(7, 12, 13, 0.02) 35%,
+      rgba(2, 4, 5, 0.65) 100%
+    ),
+
+    var(--bg);
+
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  overflow-x: hidden;
+}
+
+/* --------------------------------------------------
+   GLOBAL BACKGROUND
+-------------------------------------------------- */
+
+/*
+  Topographic ring clusters from the Figma design.
+
+  One absolutely-positioned layer spanning the whole
+  document (body is position:relative). Three
+  concentric-ring tiles anchored to the page flow so
+  each section gets its designed cluster:
+
+    1. top-left corner of the hero (quarter rings)
+    2. center of the hero
+    3. bottom-right of services / about boundary
+
+  No z-index anywhere: this layer is generated before
+  .site in tree order, so content paints above it
+  naturally.
+*/
+
+body::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='1400'%20height='1400'%20viewBox='0%200%201400%201400'%3E%3Cg%20fill='none'%20stroke='%23ffffff'%20stroke-opacity='.12'%3E%3Ccircle%20cx='700'%20cy='700'%20r='37'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='74'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='111'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='148'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='185'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='222'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='259'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='296'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='333'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='370'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='407'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='444'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='481'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='518'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='555'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='592'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='629'/%3E%3Ccircle%20cx='700'%20cy='700'%20r='666'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='2200'%20height='2200'%20viewBox='0%200%202200%202200'%3E%3Cg%20fill='none'%20stroke='%23ffffff'%20stroke-opacity='.10'%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='36'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='48'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='60'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='72'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='84'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='96'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='108'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='120'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='132'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='144'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='156'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='168'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='180'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='192'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='204'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='216'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='228'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='240'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='252'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='264'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='276'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='288'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='300'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='312'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='324'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='336'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='348'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='360'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='372'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='384'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='396'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='408'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='420'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='432'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='444'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='456'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='468'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='480'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='492'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='504'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='516'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='528'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='540'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='552'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='564'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='576'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='588'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='600'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='612'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='624'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='636'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='648'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='660'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='672'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='684'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='696'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='708'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='720'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='732'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='744'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='756'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='768'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='780'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='792'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='804'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='816'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='828'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='840'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='852'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='864'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='876'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='888'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='900'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='912'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='924'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='936'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='948'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='960'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='972'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='984'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='996'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='1008'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='1020'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='1032'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='1044'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='1056'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='1068'/%3E%3Ccircle%20cx='1100'%20cy='1100'%20r='1080'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='800'%20height='800'%20viewBox='0%200%20800%20800'%3E%3Cg%20fill='none'%20stroke='%23ffffff'%20stroke-opacity='.12'%3E%3Ccircle%20cx='400'%20cy='400'%20r='30'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='60'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='90'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='120'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='150'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='180'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='210'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='240'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='270'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='300'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='330'/%3E%3Ccircle%20cx='400'%20cy='400'%20r='360'/%3E%3C/g%3E%3C/svg%3E");
+
+  background-repeat: no-repeat;
+  background-size:
+    1400px 1400px,
+    2200px 2200px,
+    800px 800px;
+  background-position:
+    left -780px top -690px,
+    right -1010px top 0px,
+    right -25px top 2550px;
+}
+
+/* --------------------------------------------------
+   NEXT.JS ROOT
+-------------------------------------------------- */
+
+#__next,
+body > div {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* --------------------------------------------------
+   MAIN SITE WRAPPER
+-------------------------------------------------- */
+
+.site,
+.site-content {
+  min-height: 100vh;
+}
+
+/* --------------------------------------------------
+   OPTIONAL CONTENT CONTAINER
+-------------------------------------------------- */
+
+.container {
+  width: min(
+    calc(100% - 48px),
+    var(--content-width)
+  );
+
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------
+   TYPOGRAPHY
+-------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.045em;
+}
+
+p {
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------
+   SECTIONS
+-------------------------------------------------- */
+
+section {
+  position: relative;
+  width: 100%;
+}
+
+
+.section {
+  padding-block: 120px;
+}
+
+.section--large {
+  padding-block: 180px;
+}
+
+/* --------------------------------------------------
+   BUTTON RESET
+-------------------------------------------------- */
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 900px) {
+  body::before {
+    background-position:
+      left -850px top -760px,
+      right -1150px top 0px,
+      right -100px top 3200px;
+
+    opacity: 0.8;
+  }
+
+  .container {
+    width: min(
+      calc(100% - 32px),
+      var(--content-width)
+    );
+  }
+
+  .section {
+    padding-block: 90px;
+  }
+
+  .section--large {
+    padding-block: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  body::before {
+    background-position:
+      left -920px top -820px,
+      right -1250px top 0px,
+      right -150px top 3600px;
+
+    opacity: 0.65;
+  }
+
+  .container {
+    width: min(
+      calc(100% - 24px),
+      var(--content-width)
+    );
+  }
+}
+
+/* --------------------------------------------------
+   REDUCE MOTION
+-------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+}
