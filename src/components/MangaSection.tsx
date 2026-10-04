@@ -11,7 +11,7 @@ export default function MangaSection() {
         {/* Header Block */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-6">
           <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-bold tracking-widest uppercase text-gray-400">
+            <p className="text-xs font-bold tracking-widest uppercase mb-5 text-gray-400">
               INTERACTIVE READERS
             </p>
             <h2 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">

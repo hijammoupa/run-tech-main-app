@@ -57,11 +57,7 @@ export default function HeroSection() {
           </div>
   
           {/* Section Label Anchor */}
-          <div className="mt-28">
-            <p className="text-xs font-bold tracking-widest uppercase text-gray-400">
-              OUR SERVICES
-            </p>
-          </div>
+       
         </div>
       </section>
     );

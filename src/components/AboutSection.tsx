@@ -5,7 +5,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* Left Column: Heading */}
-            <div className="lg:col-span-6 space-y-4">
+            <div className="lg:col-span-6 space-y-5">
               <p className="text-xs font-bold tracking-widest uppercase text-gray-400">
                 ABOUT US
               </p>

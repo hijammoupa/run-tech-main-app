@@ -66,8 +66,13 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-16">
+    <section id="services" className="py-12">
       <div className="max-w-7xl mx-auto px-6">
+      <div className="mb-5">
+            <p className="text-xs font-bold tracking-widest uppercase text-gray-400">
+              OUR SERVICES
+            </p>
+          </div>
         <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-16 max-w-3xl leading-tight">
           Tailored solutions for modern entertainment providers
         </h2>

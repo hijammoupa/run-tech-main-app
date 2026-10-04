@@ -62,7 +62,7 @@ export const Footers = () => {
             <div>
               <h4 className="text-white font-bold text-base mb-4">Legal</h4>
               <ul className="space-y-3 text-sm text-[#8aa39b]">
-                <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
+                <li><a href="/terms" className="hover:text-white transition-colors">Terms of Service</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Cookie Settings</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Ad choices</a></li>

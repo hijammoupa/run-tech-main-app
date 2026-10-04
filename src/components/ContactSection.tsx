@@ -19,7 +19,7 @@ export default function ContactSection() {
               Have a product launch coming up or need to scale your streaming capacity? Our engineering consultants are ready to assist.
             </p>
             <button className="px-8 py-3.5 rounded-full bg-white text-[#050d0a] font-bold text-sm hover:bg-gray-100 transition-colors">
-              Get Started
+             <a href="mailto:contact@runtech.com">Get Started</a>
             </button>
           </div>
 
